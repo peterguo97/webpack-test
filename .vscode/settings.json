@@ -1,0 +1,15 @@
+{
+    "eslint.options": {
+        "configFile": "E:/webpack-test/.eslintrc.js"
+    },
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "html",
+        {
+            "language": "html",
+            "autoFix": true
+        }
+    ],
+    "eslint.autoFixOnSave": true,
+}

@@ -19,6 +19,7 @@ const dev = {
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),
-    ]
-}
+    ],
+};
+
 module.exports = merge(base, dev);

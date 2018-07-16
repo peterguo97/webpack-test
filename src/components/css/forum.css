@@ -1,0 +1,59 @@
+.talkingWrapper {
+   width: 98%;
+    padding: 10px,1%;
+    display: -ms-flexbox;
+    background: #fff;
+    padding: 5px 1%;
+    display: flex;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    height: 100px;
+}
+
+.leftImg {
+    width: 30%;
+    height: 100%;
+}
+
+.leftImg img {
+    width: 100%;
+    height: 100%;
+}
+
+.commentImg img {
+    width: 15px;
+    height: 15px;
+}
+
+.rightContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 60%;
+    padding:0 3%;
+}
+
+.comment {
+    height: 15px;
+    display: flex;
+    justify-content: flex-end;
+    line-height: 15px;
+}
+
+.commentNum {
+    font-size: 13px;
+}
+
+.commentText {
+    font-size: 15px;
+    line-height: 18px;
+}
+
+.mainContent {
+    width: 100%;
+    line-height: 14px;
+    overflow: hidden;
+    font-size: 18px;
+    height: 72px;
+}
