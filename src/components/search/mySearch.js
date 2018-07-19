@@ -12,11 +12,11 @@ class Search extends React.Component {
     };
   }
 
-  onChange(value) {
+  onChange = (value)=> {
     this.setState({ value });
   }
 
-  clear() {
+  clear = ()=> {
     this.setState({ value: '' });
   }
 
@@ -30,7 +30,7 @@ class Search extends React.Component {
         <SearchBar
           value={this.state.value}
           onChange={this.onChange}
-          placeholder="Search"
+          placeholder="lalallalal"
           maxLength={20}
         />
       </div>

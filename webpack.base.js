@@ -1,7 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const webpack = require('webpack');
 const path = require('path');
 
 const devMode = process.env.NODE_ENV !== 'production';
@@ -12,8 +11,9 @@ module.exports = {
         // vendor: ['react', 'react-dom', 'react-router-dom'],
     },
     output: {
-        path: path.join(__dirname, './dist'),
         filename: '[name].[hash:8].js',
+        path: path.join(__dirname, './dist'),
+        publicPath: '/',
     },
     resolve: {
         extensions: ['.js', '.jsx', '.json'],
