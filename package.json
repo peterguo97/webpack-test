@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --config webpack.dev.js --host 10.14.4.104 --mode=development --colors",
+    "start": "webpack-dev-server --config webpack.dev.js --mode=development --colors",
     "build": "webpack --config webpack.prod.js --mode=production --progress --colors",
     "dll": "webpack --config webpack.dll.config.js --mode=production --progress"
   },

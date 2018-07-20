@@ -58,14 +58,6 @@ module.exports = {
         ],
     },
     plugins: [
-        new CleanWebpackPlugin(
-            // 需要删除的文件夹或文件
-            [path.join(__dirname, './dist/*.*')],
-            {
-                // root目录
-                root: path.join(__dirname, './'),
-            },
-        ),
         new MiniCssExtractPlugin({
             filename: devMode ? '[name].css' : '[name].[hash].css',
             chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
