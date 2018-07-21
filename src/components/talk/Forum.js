@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import common from '../css/detail.css';
 import Talking from './talking';
 import test from '../../assets/girl.jpg';
@@ -6,22 +7,26 @@ import test from '../../assets/girl.jpg';
 const data = [{
     img: test,
     title: 'just a testjust a testjust a testjust a testjust a testjust a testjust a testjust a testjust ajust a testjust a test testjust a testjust a testjust a testjust a testjust a testjust a testjust a testjust a testjust a testjust a testjust a testjust a testjust a test',
-    comment: 100
+    comment: 100,
+    id: 0,
     },
     {
     img: test,
     title: 'just a test',
-    comment: 100
+    comment: 100,
+    id: 1,
     },
     {
     img: test,
     title: 'just a test',
-    comment: 100
+    comment: 100,
+    id: 2,
     },
     {
         img: test,
         title: 'just a test',
-        comment: 100
+        comment: 100,
+        id: 3,
     },
 ]
 class Forum extends React.Component {
@@ -31,7 +36,11 @@ class Forum extends React.Component {
                 {
                     data.map((item,index)=>{
                         return(
-                            <Talking key={index} data = {item} />
+                            <div key={index}>
+                                <Link to={`/detail/${item.id}`}>
+                                    <Talking data={item} />
+                                </Link>
+                            </div>
                         )
                     })
                 }

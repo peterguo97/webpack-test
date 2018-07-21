@@ -9,6 +9,7 @@ import Person from './routes/Person/myperson';
 import ChangeMessage from './routes/Person/changeMessage';
 import ModifyMessage from './routes/ModifyMessage';
 import MobileEditor from './routes/testEditor';
+import DetailTalk from './routes/DetailTalk';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/plus" component={MobileEditor} />
         <Route path="/change" component={ChangeMessage} />
         <Route path="/changevalue/:type/:value" component={ModifyMessage} />
+        <Route path="/detail/:talkingId" component={DetailTalk} />
       </Switch>
     </Router>
   );
