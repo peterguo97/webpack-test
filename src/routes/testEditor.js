@@ -1,5 +1,6 @@
 import React from 'react';
-import { List, InputItem, NavBar, ImagePicker, WingBlank, Button } from 'antd-mobile';
+import { List, InputItem, NavBar, ImagePicker, WingBlank, Button, Icon } from 'antd-mobile';
+import { Link } from 'react-router-dom';
 import style from './css/common.css';
 
 const data = [{
@@ -47,7 +48,7 @@ class MobileEditor extends React.Component {
         return(
             <div>
                 <List>
-                    <NavBar mode="dark">说点什么</NavBar>
+                    <NavBar mode="dark" leftContent={<Link to='/'><Icon style={{color: '#fff'}} type="left"/></Link>}>说点什么</NavBar>
                     <InputItem value={this.state.title} onChange={this.changeTitle} type="text" placeholder="请输入标题">标题</InputItem>
                     <div className={style.title}>请输入内容</div>
                     <textarea className={style.listContent} name="" id="" cols="30" rows="10" onChange={this.changeContent} value={this.state.content}></textarea>

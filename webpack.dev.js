@@ -22,6 +22,19 @@ const dev = {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),
     ],
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    chunks: 'initial',
+                    minChunks: 2,
+                    maxInitialRequests: 5,
+                    minSize: 2,
+                    name: 'common',
+                },
+            },
+        },
+    },
 };
 
 module.exports = merge(base, dev);

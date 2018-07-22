@@ -9,20 +9,20 @@ import style from './css/detail.css';
 
 const tabs = [
     {
- src: talking, sub: '1', title: 'talking', to: '/',
-},
-    {
- src: search, sub: '2', title: 'search', to: '/search',
-},
-    {
- src: plus, sub: '3', title: 'plus', to: '/plus',
-},
-    {
- src: notice, sub: '4', title: 'notice', to: '/notice',
-},
-    {
- src: me, sub: '5', title: 'me', to: '/me',
-},
+    src: talking, sub: '1', title: 'talking', to: '/',
+    },
+        {
+    src: search, sub: '2', title: 'search', to: '/search',
+    },
+        {
+    src: plus, sub: '3', title: 'plus', to: '/plus',
+    },
+        {
+    src: notice, sub: '4', title: 'notice', to: '/notice',
+    },
+        {
+    src: me, sub: '5', title: 'me', to: '/me',
+    },
   ];
 
 class IndexFooter extends React.Component {

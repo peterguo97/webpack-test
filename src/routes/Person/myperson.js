@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import MessageDetail from '../../components/MessageDetail';
-import girl from '../../assets/girl.jpg';
-import go from '../../assets/go.png';
+import MessageDetail from 'components/MessageDetail';
+import girl from 'assets/girl.jpg';
+import go from 'assets/go.png';
 import IndexPage from '../IndexPage';
 
 const data = {

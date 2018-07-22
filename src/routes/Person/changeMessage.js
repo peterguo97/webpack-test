@@ -1,9 +1,9 @@
 import React from 'react';
 import { NavBar, Icon } from 'antd-mobile';
 import { Link } from 'react-router-dom';
-import ShowMessage from '../../components/showMessage';
-import go from '../../assets/go.png';
-import RightContent from '../../components/rightContent';
+import ShowMessage from 'components/showMessage';
+import go from 'assets/go.png';
+import RightContent from 'components/rightContent';
 
 const data = {
     name: 'Bob',

@@ -1,7 +1,9 @@
 const webpack = require('webpack');
 const path = require('path');
 const merge = require('webpack-merge');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const WebpackParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const base = require('./webpack.base');
 
 const prod = {
@@ -34,6 +36,7 @@ const prod = {
         new webpack.DllReferencePlugin({
             manifest: path.join(__dirname, './dist/dll', 'manifest.json'),
         }),
+        new BundleAnalyzerPlugin(),
     ],
 };
 

@@ -1,6 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const path = require('path');
 
 const devMode = process.env.NODE_ENV !== 'production';
@@ -13,7 +12,7 @@ module.exports = {
     output: {
         filename: '[name].[hash:8].js',
         path: path.join(__dirname, './dist'),
-        publicPath: '/',
+        publicPath: './',
     },
     resolve: {
         extensions: ['.js', '.jsx', '.json'],
@@ -77,17 +76,4 @@ module.exports = {
             },
         }),
     ],
-    optimization: {
-        splitChunks: {
-            cacheGroups: {
-                commons: {
-                    chunks: 'initial',
-                    minChunks: 2,
-                    maxInitialRequests: 5,
-                    minSize: 2,
-                    name: 'common',
-                },
-            },
-        },
-    },
 };
