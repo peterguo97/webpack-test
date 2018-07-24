@@ -79,3 +79,54 @@
     width: 80%;
     height: 100%;
 }
+
+.detailComment {
+    margin-top: 10px;
+}
+
+.detailCommentTitle {
+    background-color: red;
+    color: white;
+    font-size: 1rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    padding-left: 1rem;
+}
+
+.detailFooter {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.textArea {
+    width: 80%;
+    min-height: 26px;
+    line-height: 20px;
+    padding: 3px;
+    outline: 0;
+    border: 1px solid #ccc;
+    font-size: 12px;
+    word-wrap: break-word;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-user-modify: read-write-plaintext-only;
+    border-radius: 4px;
+    margin-right: 5px;
+}
+
+.textArea:empty::before {
+    color: grey;
+    content:attr(placeholder);
+
+}
+
+.upload {
+    background: url('assets/upload.png');
+    background-repeat: no-repeat;
+    width: 10%;
+    height: 30px;
+    background-size: contain;
+}

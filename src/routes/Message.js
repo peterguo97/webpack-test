@@ -1,6 +1,6 @@
+import React from 'react'
 import IndexPage from './IndexPage';
 import Notice from 'components/Notice';
-import React from 'react'
 
 class MyMessage extends React.Component {
     render(){

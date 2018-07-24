@@ -1,5 +1,6 @@
 import React from 'react';
 import { WingBlank, WhiteSpace, NavBar } from 'antd-mobile';
+import Comment from './Comment';
 import style from './css/common.css';
 import test1 from 'assets/girl.jpg';
 
@@ -42,6 +43,7 @@ class DetailTalk extends React.Component {
                             { imgList }
                         </div>
                     </WingBlank>
+                    <Comment />
                 </div>
             </div>
         )
