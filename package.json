@@ -4,9 +4,9 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --config webpack.dev.js --mode=development --colors",
+    "start": "webpack-dev-server --mode development --config webpack.dev.js --colors",
     "build": "webpack --config webpack.prod.js --mode production --report --colors",
-    "dll": "webpack --config webpack.dll.config.js --mode=production --progress"
+    "dll": "webpack --config webpack.dll.config.js --mode production --progress"
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +22,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^1.0.0",
+    "cssnano": "^4.0.4",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^17.0.0",
     "eslint-plugin-import": "^2.13.0",
@@ -31,7 +32,9 @@
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.4.1",
+    "optimize-css-assets-webpack-plugin": "^5.0.0",
     "postcss-loader": "^2.1.6",
+    "postcss-safe-parser": "^4.0.1",
     "style-loader": "^0.21.0",
     "url-loader": "^1.0.1",
     "webpack": "^4.14.0",

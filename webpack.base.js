@@ -2,8 +2,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
-const devMode = process.env.NODE_ENV !== 'production';
-
 module.exports = {
     entry: {
         index: path.join(__dirname, './src/main.js'),
@@ -30,22 +28,7 @@ module.exports = {
                 },
                 exclude: /node_modules/,
             },
-            {
-                test: /\.css$/,
-                use: [
-                    devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-                    'css-loader',
-                ],
-                include: /node_modules/,
-            },
-            {
-                test: /\.css$/,
-                use: [
-                    devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-                    'css-loader?modules&localIdentName=[name]-[hash:base64:5]',
-                ],
-                exclude: /node_modules/,
-            },
+            
             {
                 test: /\.(png|jpg|gif|ttf|eot|woff(2)?)(\?[=a-z0-9]+)?$/,
                 use: [{
@@ -61,11 +44,6 @@ module.exports = {
         ],
     },
     plugins: [
-        new MiniCssExtractPlugin({
-            filename: devMode ? '[name].css' : '[name].[hash].css',
-            chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
-          }),
-        // new ExtractTextPlugin('[name].[hash:8].css'),
         new HtmlWebpackPlugin({
             template: './src/templet.html',
             filename: 'index.html',

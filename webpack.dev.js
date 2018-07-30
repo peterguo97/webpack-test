@@ -8,7 +8,6 @@ const dev = {
         contentBase: path.join(__dirname, './dist'),
         port: 8080,
         publicPath: '/',
-        host: 'localhost',
         overlay: true,
         compress: true,
         open: true,
@@ -18,6 +17,26 @@ const dev = {
         progress: true,
     },
     devtool: 'inline-source-map',
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                ],
+                include: /node_modules/,
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader?modules&localIdentName=[name]-[hash:base64:5]',
+                ],
+                exclude: /node_modules/,
+            },
+        ]
+    },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),

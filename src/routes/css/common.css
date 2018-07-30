@@ -82,6 +82,12 @@
 
 .detailComment {
     margin-top: 10px;
+    background: rgb(245,245,249);
+}
+
+.detailCommentItem {
+    background: #fff;
+    margin-bottom: 2px;
 }
 
 .detailCommentTitle {

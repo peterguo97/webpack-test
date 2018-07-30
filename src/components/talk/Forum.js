@@ -29,6 +29,7 @@ const data = [{
         id: 3,
     },
 ]
+
 class Forum extends React.Component {
     render(){
         return(

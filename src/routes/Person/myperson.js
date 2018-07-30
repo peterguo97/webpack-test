@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { WingBlank, WhiteSpace, List } from 'antd-mobile';
 import MessageDetail from 'components/MessageDetail';
 import girl from 'assets/girl.jpg';
 import go from 'assets/go.png';
@@ -10,6 +11,8 @@ const data = {
     img: girl,
     description: '通信1603',
 };
+
+const Item = List.Item;
 
 class Person extends React.Component {
     render() {
@@ -26,6 +29,11 @@ class Person extends React.Component {
                             )}
                         />
                     </Link>
+                    <List renderHeader={()=> '设备管理'}>
+                        <Item arrow='horizontal'>上传设备</Item>
+                        <Item arrow='horizontal'>我的设备</Item>
+                        <Item arrow='horizontal'>借用设备</Item>
+                    </List>
                 </div>
             </IndexPage>
         );
