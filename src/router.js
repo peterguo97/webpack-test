@@ -10,6 +10,9 @@ import ChangeMessage from './routes/Person/changeMessage';
 import ModifyMessage from './routes/ModifyMessage';
 import MobileEditor from './routes/testEditor';
 import DetailTalk from './routes/DetailTalk';
+import UploadDevice from './routes/UploadDevice';
+import BorrowDevice from './routes/BorrowDevice';
+import MyDevice from './routes/MyDevice';
 
 function App() {
   return (
@@ -19,6 +22,9 @@ function App() {
         <Route path="/notice" component={MyMessage} />
         <Route path="/search" component={MySearch} />
         <Route path="/me" component={Person} />
+        <Route path="/uploadDevice" component={UploadDevice} />
+        <Route path="/myDevice" component={MyDevice} />
+        <Route path="/borrowDevice" component={BorrowDevice} />
         <Route path="/plus" component={MobileEditor} />
         <Route path="/change" component={ChangeMessage} />
         <Route path="/changevalue/:type/:value" component={ModifyMessage} />

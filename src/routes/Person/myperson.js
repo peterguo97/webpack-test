@@ -30,9 +30,15 @@ class Person extends React.Component {
                         />
                     </Link>
                     <List renderHeader={()=> '设备管理'}>
-                        <Item arrow='horizontal'>上传设备</Item>
-                        <Item arrow='horizontal'>我的设备</Item>
-                        <Item arrow='horizontal'>借用设备</Item>
+                        <Link to="/uploadDevice">
+                            <Item arrow='horizontal'>上传设备</Item>
+                        </Link>
+                        <Link to="/myDevice">
+                            <Item arrow='horizontal'>我的设备</Item>                  
+                        </Link>
+                        <Link to="/borrowDevice">
+                            <Item arrow='horizontal'>借用设备</Item>
+                        </Link>                        
                     </List>
                 </div>
             </IndexPage>

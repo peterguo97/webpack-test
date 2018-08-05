@@ -1,5 +1,6 @@
 import React from 'react';
-import { WingBlank, WhiteSpace, NavBar } from 'antd-mobile';
+import { WingBlank, WhiteSpace, NavBar, Icon } from 'antd-mobile';
+import { Link } from 'react-router-dom';
 import Comment from './Comment';
 import style from './css/common.css';
 import test1 from 'assets/girl.jpg';
@@ -27,7 +28,11 @@ class DetailTalk extends React.Component {
         return(
             <div className={style.mainBox}>
                 <div className={style.top}>
-                    <NavBar>热门帖子</NavBar>
+                    <NavBar 
+                        leftContent={<Link to='/'><Icon style={{ color: '#fff' }} type="left" /></Link>}
+                        rightContent={<Icon onClick={()=> console.log(1)} type="ellipsis" />}
+                    >
+                    热门帖子</NavBar>
                 </div>
                 <div className={style.middle}>
                     <WingBlank>
