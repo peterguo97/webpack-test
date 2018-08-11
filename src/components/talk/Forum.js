@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import common from '../css/detail.css';
 import Talking from './talking';
 import test from '../../assets/girl.jpg';
+import axios from 'axios';
 
 const data = [{
     img: test,
@@ -31,6 +32,13 @@ const data = [{
 ]
 
 class Forum extends React.Component {
+    componentDidMount() {
+        axios.get('/dc/index/index/limit/10').then((message) => {
+            console.log(message)
+        }).catch((e)=>{
+            console.log(e);
+        })
+    }
     render(){
         return(
             <div className={common.wrapper}>

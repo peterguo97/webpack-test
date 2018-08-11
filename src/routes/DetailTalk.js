@@ -1,5 +1,5 @@
 import React from 'react';
-import { WingBlank, WhiteSpace, NavBar, Icon } from 'antd-mobile';
+import { WingBlank, WhiteSpace, NavBar, Icon, Picker } from 'antd-mobile';
 import { Link } from 'react-router-dom';
 import Comment from './Comment';
 import style from './css/common.css';
@@ -15,7 +15,56 @@ const data = {
     ]
 }
 
+const seasons = {
+    first: [
+        [
+            { label: '点赞该贴', value: 0 },
+            { label: '举报该贴', value: 1 },
+        ]
+    ],
+    second: [
+        [
+            { label: '涉嫌政治', value: 0 },
+            { label: '有色情内容', value: 1 },
+            { label: '违背社会道德', value: 2 },
+        ]
+    ]
+}
+
 class DetailTalk extends React.Component {
+    state = {
+        sValue: '',
+        show: false,
+        bad: false,
+        data: seasons.first
+    }
+
+    handleClick = () => {
+        this.setState({
+            show: true,
+        })
+    }
+
+    manageCard = (v) => {
+        if(!this.state.bad) {
+            if(v[0] === 1) {
+                this.setState({
+                    bad: true,
+                    data: seasons.second,
+                    sValue: '',
+                })
+                return;
+            }
+            else {
+                console.log(v)
+                return;
+            }
+        }
+        else {
+            console.log(v);
+        }
+    }
+
     render(){
         let imgList = data.imgs.map((item, index) => {
             return (
@@ -24,13 +73,12 @@ class DetailTalk extends React.Component {
                 </div>
             )
         });
-        console.log(imgList);
         return(
             <div className={style.mainBox}>
                 <div className={style.top}>
                     <NavBar 
                         leftContent={<Link to='/'><Icon style={{ color: '#fff' }} type="left" /></Link>}
-                        rightContent={<Icon onClick={()=> console.log(1)} type="ellipsis" />}
+                        rightContent={<Icon onClick={this.handleClick} type="ellipsis" />}
                     >
                     热门帖子</NavBar>
                 </div>
@@ -50,6 +98,19 @@ class DetailTalk extends React.Component {
                     </WingBlank>
                     <Comment />
                 </div>
+                <Picker
+                    visible={this.state.show}
+                    data={this.state.data}
+                    title=""
+                    itemStyle={{ fontSize: '20px' }}
+                    cols={1}
+                    cascade={false}
+                    extra="请选择(可选)"
+                    value={this.state.sValue}
+                    onOk={this.manageCard}
+                    onDismiss={v => this.setState({ sValue: '', show: false })}
+                >
+                </Picker>
             </div>
         )
     }

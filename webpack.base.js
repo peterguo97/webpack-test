@@ -30,16 +30,12 @@ module.exports = {
             },
             
             {
-                test: /\.(png|jpg|gif|ttf|eot|woff(2)?)(\?[=a-z0-9]+)?$/,
-                use: [{
-                    loader: 'url-loader',
-                    options: {
-                        query: {
-                            limit: '8192',
-                            name: 'images/[name]_[hash:7].[ext]',
-                        },
-                    },
-                }],
+                test: /\.(png|jpg|gif|ttf|eot)$/,
+                loader: 'url-loader',
+                options: {
+                    limit: '5000',
+                    name: 'images/[name]_[hash:7].[ext]',
+                },
             },
         ],
     },

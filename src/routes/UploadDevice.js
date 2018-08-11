@@ -1,7 +1,9 @@
 import React from 'react';
-import { List, InputItem, NavBar, ImagePicker, WingBlank, Button, Icon } from 'antd-mobile';
+import { List, InputItem, NavBar, ImagePicker, WingBlank, Button, Icon, Radio, WhiteSpace } from 'antd-mobile';
 import { Link } from 'react-router-dom';
 import style from './css/common.css';
+
+const RadioItem = Radio.RadioItem;
 
 const data = [{
     url: 'https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg',
@@ -18,7 +20,8 @@ class UploadDevice extends React.Component {
             title: '',
             content: '',
             num: '',
-            files: data
+            files: data,
+            value: '',
         }
     }
 
@@ -51,14 +54,38 @@ class UploadDevice extends React.Component {
         console.log('hello');
     }
 
+    onChangeRadio = (value) => {
+        this.setState({
+            value: value,
+        })
+    }
+
     render() {
         let files = this.state.files;
+        let value = this.state.value;
+        const data1 = [
+            { value: 0, label: '示波器' },
+            { value: 1, label: '实验箱' },
+            { value: 2, label: '开发板' },
+            { value: 3, label: '其它' },
+        ];
         return (
-            <div>
-                <List>
+            <div className={style.mainBox}>
+                <div className={style.top}>
                     <NavBar mode="dark" leftContent={<Link to='/me'><Icon style={{ color: '#fff' }} type="left" /></Link>}>上传设备</NavBar>
+                </div>
+                <div className={style.middle}>
                     <InputItem value={this.state.title} onChange={this.changeTitle} type="text" placeholder="请输入设备名称">设备名称:</InputItem>
                     <InputItem value={this.state.num} onChange={this.changeNum} type="text" placeholder="请输入设备型号">设备型号:</InputItem>
+                    <WhiteSpace size="lg" />
+                    <List renderHeader={() => '选择设备类型'}>
+                        {data1.map(i => (
+                            <RadioItem key={i.value} checked={value === i.value} onChange={() => this.onChangeRadio(i.value)}>
+                                {i.label}
+                            </RadioItem>
+                        ))}
+                    </List>
+                    <WhiteSpace size="lg" />
                     <div className={style.title}>请输入设备描述</div>
                     <textarea className={style.listContent} name="" cols="30" rows="10" onChange={this.changeContent} value={this.state.content}></textarea>
                     <WingBlank>
@@ -71,7 +98,7 @@ class UploadDevice extends React.Component {
                         />
                     </WingBlank>
                     <Button type="primary" onClick={this.handleClick}>上传</Button>
-                </List>
+                </div>
             </div>
         )
     }

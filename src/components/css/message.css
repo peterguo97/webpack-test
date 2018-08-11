@@ -110,3 +110,14 @@
     width: 1.2rem;
     height: 1.2rem;
 }
+
+.mylabel {
+    border: 1px solid #fff;
+    font-size: 18px;
+    height: 30px;
+    line-height: 30px;
+    background: aquamarine;
+    padding: 4px 12px;
+    border-radius: 12px;
+    margin: 2px 4px;
+}

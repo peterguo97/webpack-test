@@ -136,3 +136,9 @@
     height: 30px;
     background-size: contain;
 }
+
+.labelwrap {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+} 
