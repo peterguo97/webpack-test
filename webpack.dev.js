@@ -15,6 +15,12 @@ const dev = {
         inline: true,
         historyApiFallback: true,
         progress: true,
+        proxy: {
+            '/api': {
+                target: 'http://localhost:3000',
+                pathRewrite: { '^/api': '' }
+            }
+        }
     },
     devtool: 'inline-source-map',
     module: {

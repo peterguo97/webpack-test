@@ -1,59 +1,74 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+import { PullToRefresh, Toast } from 'antd-mobile';
 import { Link } from 'react-router-dom';
 import common from '../css/detail.css';
 import Talking from './talking';
 import test from '../../assets/girl.jpg';
 import axios from 'axios';
 
-const data = [{
-    img: test,
-    title: 'just a testjust a testjust a testjust a testjust a testjust a testjust a testjust a testjust ajust a testjust a test testjust a testjust a testjust a testjust a testjust a testjust a testjust a testjust a testjust a testjust a testjust a testjust a testjust a test',
-    comment: 100,
-    id: 0,
-    },
-    {
-    img: test,
-    title: 'just a test',
-    comment: 100,
-    id: 1,
-    },
-    {
-    img: test,
-    title: 'just a test',
-    comment: 100,
-    id: 2,
-    },
-    {
-        img: test,
-        title: 'just a test',
-        comment: 100,
-        id: 3,
-    },
-]
+let limit = 20;
 
 class Forum extends React.Component {
-    componentDidMount() {
-        axios.get('/dc/index/index/limit/10').then((message) => {
-            console.log(message)
+    state = {
+      refreshing: false,
+      height: document.documentElement.clientHeight,
+      data: [],
+    }
+
+    handleRefresh = () => {
+        this.setState({
+            refreshing: true,
+        })
+        axios.get(`forum?limit=${limit}`).then((message) => {
+            this.setState({
+                data: message.data,
+                refreshing: false,
+            })
+            limit += 20;
         }).catch((e)=>{
-            console.log(e);
+            Toast.fail("请求失败", 1);
+        })
+
+    }
+
+    componentDidMount() {
+        const hei = this.state.height - ReactDOM.findDOMNode(this.ptr).offsetTop;
+        this.setState({
+            refreshing: true,
+        })
+        axios.get(`forum?limit=${limit}`).then((message) => {
+            this.setState({
+                data: message.data,
+                refreshing: false,
+            })
+            limit += 20;
+        }).catch((e)=>{
+            Toast.fail("请求失败", 1);
         })
     }
     render(){
         return(
-            <div className={common.wrapper}>
-                {
-                    data.map((item,index)=>{
-                        return(
-                            <div key={index}>
-                                <Link to={`/detail/${item.id}`}>
-                                    <Talking data={item} />
-                                </Link>
-                            </div>
-                        )
-                    })
-                }
-            </div>
+             <PullToRefresh
+                damping={100}
+                ref={el => this.ptr = el}
+                style={{
+                height: this.state.height,
+                overflow: 'auto',
+                }}
+                indicator={{ deactivate: '上拉可以刷新' }}
+                direction='up'
+                refreshing={this.state.refreshing}
+                onRefresh={this.handleRefresh}
+            >
+                {this.state.data.map(item => (
+                    <div key={item.id}>
+                        <Link to={`/detail/${item.id}`}>
+                            <Talking data={item} />
+                        </Link>
+                    </div>
+                ))}
+            </PullToRefresh>
         )
     }
 }

@@ -1,15 +1,8 @@
 import React from 'react';
-import { List, InputItem, NavBar, ImagePicker, WingBlank, Button, Icon } from 'antd-mobile';
+import axios from 'axios';
+import { List, InputItem, NavBar, ImagePicker, WingBlank, Button, Icon, Toast } from 'antd-mobile';
 import { Link } from 'react-router-dom';
 import style from './css/common.css';
-
-const data = [{
-    url: 'https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg',
-    id: '2121',
-}, {
-    url: 'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg',
-    id: '2122',
-}];
 
 class MobileEditor extends React.Component {
     constructor() {
@@ -17,7 +10,7 @@ class MobileEditor extends React.Component {
         this.state = {
             title: '',
             content: '',
-            files: data
+            files: [],
         }
     }
 
@@ -41,8 +34,49 @@ class MobileEditor extends React.Component {
     }
 
     handleClick = () => {
-        console.log('hello');
+        let result = this.checkNull();
+        if(! result) {
+            return;
+        }
+        axios.post('/topicsadd',this.state).then((message)=>{
+            if (message.status === 200 ){
+                Toast.success('发帖成功', 1);
+            }
+        }).catch((e)=>{
+            Toast.fail('发帖失败',1);
+        })
     }
+
+    checkNull = () => {
+        for (let key in this.state) {
+            switch (key) {
+                case 'title':
+                    if (this.state[key] === '') {
+                        Toast.fail('请添加帖子标题', 1);
+                        return false;
+                    }
+                    break;
+
+                case 'content':
+                    if (this.state[key] === '') {
+                        Toast.fail('请添加描述', 1);
+                        return false;
+                    }
+                    break;
+
+                case 'files':
+                    if (this.state[key].length === 0) {
+                        Toast.fail('请添加设备图片', 1);
+                        return false;
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+        return true;
+    }
+
     render() {
         let files = this.state.files;
         return(
@@ -56,7 +90,6 @@ class MobileEditor extends React.Component {
                         <ImagePicker
                             files={files}
                             onChange={this.onChange}
-                            onImageClick={(index, fs) => console.log(index, fs)}
                             selectable={files.length < 5}
                             multiple={false}
                         />

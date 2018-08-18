@@ -6,7 +6,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --mode development --config webpack.dev.js --colors",
     "build": "webpack --config webpack.prod.js --mode production --report --colors",
-    "dll": "webpack --config webpack.dll.config.js --mode production --progress"
+    "dll": "webpack --config webpack.dll.config.js --mode production --progress",
+    "mock": " json-server --watch ./mock/mock.json --port 3000 | webpack-dev-server --mode development --config webpack.dev.js --colors"
   },
   "author": "",
   "license": "ISC",
@@ -49,7 +50,7 @@
     "antd-mobile": "^2.2.2",
     "babel-runtime": "^6.26.0",
     "react": "^16.4.1",
-    "react-dom": "^16.4.1",
+    "react-dom": "^16.4.2",
     "react-router": "^4.4.0-alpha.1",
     "react-router-dom": "^4.3.1"
   }

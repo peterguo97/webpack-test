@@ -1,5 +1,6 @@
 import React from 'react';
-import { WhiteSpace } from 'antd-mobile';
+import { WhiteSpace, Toast } from 'antd-mobile';
+import axios from 'axios';
 import DetailComment from 'components/detailComment';
 import style from './css/common.css';
 import girl from 'assets/girl.jpg';
@@ -29,6 +30,26 @@ const data = [
 ]
 
 class Comment extends React.Component {
+    state = {
+        value: '',
+    }
+
+    handleClick = () => {
+        let content = this.refs['comment'].innerHTML;
+        if( ! content ) {
+            Toast.fail('你还未添加评论', 1);
+            return;
+        }
+        axios.post('/replyadd',{id: this.props.id, content: content}).then((e)=>{
+            if(e.status === 200) {
+                Toast.info('评论成功',1);
+            }
+        }).catch((e)=> {
+            Toast.fail('发表失败',1);
+        })
+
+    }
+
     render() {
         const list = data.map((item, index)=>{
             return(
@@ -42,8 +63,8 @@ class Comment extends React.Component {
                 <div className={style.detailCommentTitle}>热门评论</div>
                 { list }
                 <div className={style.detailFooter}>
-                    <div contentEditable="true" placeholder="发表评论" className={style.textArea}></div>
-                    <div className={style.upload}></div>
+                    <div contentEditable="true" ref="comment" placeholder="发表评论" className={style.textArea}></div>
+                    <div onClick={this.handleClick} className={style.upload}></div>
                 </div>
             </div>
         )

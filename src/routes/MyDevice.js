@@ -1,11 +1,10 @@
 import React from 'react';
 import { List, NavBar, Icon, Picker, Button } from 'antd-mobile';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
-import girl from 'assets/girl.jpg';
 
 const Item = List.Item;
 const Brief = Item.Brief;
-
 
 const seasons = [
     [
@@ -18,6 +17,7 @@ class MyDevice extends React.Component {
     state = {
         sValue: '',
         show: false,
+        data: []
     }
 
     handleClick = () => {
@@ -26,17 +26,29 @@ class MyDevice extends React.Component {
         })
     }
 
+    componentDidMount = () => {
+        axios.get('/mygoods').then((e)=> {
+            this.setState({
+                data: e.data
+            })
+        })
+    }
+    
+
     render() {
         return (
             <div>
                 <NavBar mode="dark" leftContent={<Link to='/me'><Icon style={{ color: '#fff' }} type="left" /></Link>}>我的设备</NavBar>
                 <List renderHeader={()=>'设备状态'}>
-                    <Item thumb={girl} multipleLine arrow="horizontal" disabled={true} onClick={this.handleClick} extra={<Button style={{background: 'lightseagreen', color: '#fff'}}>闲置中</Button>}>
-                        51单片机 <Brief>test</Brief>
-                    </Item>
-                    <Item thumb={girl} multipleLine arrow="horizontal" disabled={true} onClick={this.handleClick} extra={<Button type="primary">借出中</Button>}>
-                        51单片机 <Brief>test</Brief>
-                    </Item>
+                    {
+                        this.state.data.map((item,index)=> {
+                            return(
+                                <Item key={index} thumb={item.img1} multipleLine arrow="horizontal" disabled={true} onClick={this.handleClick} extra={<Button style={{ background: 'lightseagreen', color: '#fff' }}>{ +item.state ? '借出中' : '闲置中' }</Button>}>
+                                    {item.name} <Brief>{item.detail}</Brief>
+                                </Item>
+                            )
+                        })
+                    }
                 </List>
                  <Picker
                     visible={this.state.show}

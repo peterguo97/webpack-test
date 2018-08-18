@@ -1,19 +1,10 @@
 import React from 'react';
 import { WingBlank, WhiteSpace, NavBar, Icon, Picker } from 'antd-mobile';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Comment from './Comment';
 import style from './css/common.css';
 import test1 from 'assets/girl.jpg';
-
-const data = {
-    title: '求助帖',
-    author: 'petter',
-    time: '16点25分',
-    content: '这是一个测试，这是一个小小的测试',
-    imgs: [
-        test1, test1, test1,
-    ]
-}
 
 const seasons = {
     first: [
@@ -36,7 +27,14 @@ class DetailTalk extends React.Component {
         sValue: '',
         show: false,
         bad: false,
-        data: seasons.first
+        data: seasons.first,
+        context: {
+            title: '',
+            author: '',
+            time: '',
+            content: '',
+            imgs: []
+        }
     }
 
     handleClick = () => {
@@ -65,7 +63,19 @@ class DetailTalk extends React.Component {
         }
     }
 
+    componentDidMount = () => {
+        let id = this.props.match.params.talkingId;
+        axios.post('/topicsdetail',{id: id}).then((e)=>{
+            this.setState({
+                context: e.data
+            })
+        })
+    }
+    
+
     render(){
+        let id = this.props.match.params.talkingId;
+        let data = this.state.context;
         let imgList = data.imgs.map((item, index) => {
             return (
                 <div key={index} className={style.detailImg}>
@@ -86,8 +96,8 @@ class DetailTalk extends React.Component {
                     <WingBlank>
                         <div className={style.detailTitle}>{data.title}</div>
                         <div className={style.detailWrapper}>
-                            <div className={style.detailText}>发帖人: {data.author}</div>
-                            <div className={style.detailText}>发帖时间： {data.time}</div>
+                            <div className={style.detailText}>发帖人: {data.name}</div>
+                            <div className={style.detailText}>发帖时间： {data.addtime}</div>
                         </div>
                         <div className={style.detailMainContent}>
                             {data.content}
@@ -96,7 +106,7 @@ class DetailTalk extends React.Component {
                             { imgList }
                         </div>
                     </WingBlank>
-                    <Comment />
+                    <Comment id={id}/>
                 </div>
                 <Picker
                     visible={this.state.show}

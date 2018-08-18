@@ -1,17 +1,10 @@
 import React from 'react';
-import { List, InputItem, NavBar, ImagePicker, WingBlank, Button, Icon, Radio, WhiteSpace } from 'antd-mobile';
+import { List, InputItem, NavBar, ImagePicker, WingBlank, Button, Icon, Radio, WhiteSpace, Toast } from 'antd-mobile';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import style from './css/common.css';
 
 const RadioItem = Radio.RadioItem;
-
-const data = [{
-    url: 'https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg',
-    id: '2121',
-}, {
-    url: 'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg',
-    id: '2122',
-}];
 
 class UploadDevice extends React.Component {
     constructor() {
@@ -20,7 +13,7 @@ class UploadDevice extends React.Component {
             title: '',
             content: '',
             num: '',
-            files: data,
+            files: [],
             value: '',
         }
     }
@@ -51,7 +44,61 @@ class UploadDevice extends React.Component {
     }
 
     handleClick = () => {
-        console.log('hello');
+        let res = this.checkNull();
+        if(!res) {
+            return;
+        }
+        axios.post('/goodsadd', this.state).then(message=>{
+            Toast.success('上传成功', 1.5);
+            console.log(mesage.data);
+        }).catch( e => {
+            Toast.fail('上传失败', 1.5);
+        })
+    }
+
+    checkNull = () => {
+        for(let key in this.state) {
+            switch (key) {
+                case 'title':
+                    if(this.state[key] === '') {
+                        Toast.fail('请添加设备名称',1);
+                        return false;
+                    }
+                    break;
+                
+                case 'num':
+                    if (this.state[key] === '') {
+                        Toast.fail('请添加设备型号', 1);
+                        return false;
+                    }
+                    break;
+
+                case 'value':
+                    if (this.state[key] === '') {
+                        Toast.fail('请选择设备类型', 1);
+                        return false;
+                    }
+                    break;
+
+
+                case 'content':
+                    if (this.state[key] === '') {
+                        Toast.fail('请添加设备描述', 1);
+                        return false;
+                    }
+                    break;
+
+                case 'files':
+                    if (this.state[key].length === 0) {
+                        Toast.fail('请添加设备图片', 1);
+                        return false;
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+        return true;
     }
 
     onChangeRadio = (value) => {
