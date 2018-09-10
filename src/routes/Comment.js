@@ -5,33 +5,34 @@ import DetailComment from 'components/detailComment';
 import style from './css/common.css';
 import girl from 'assets/girl.jpg';
 
-const data = [
-    {
-        userImg: girl,
-        author: 'petter',
-        content: 'let me have a try',
-        good: 57,
-        bad: 10,
-    },
-    {
-        userImg: girl,
-        author: 'petter',
-        content: 'let me have a try',
-        good: 57,
-        bad: 10
-    },
-    {
-        userImg: girl,
-        author: 'petter',
-        content: 'let me have a try',
-        good: 57,
-        bad: 10,
-    },
-]
+// const data = [
+//     {
+//         userImg: girl,
+//         author: 'petter',
+//         content: 'let me have a try',
+//         good: 57,
+//         bad: 10,
+//     },
+//     {
+//         userImg: girl,
+//         author: 'petter',
+//         content: 'let me have a try',
+//         good: 57,
+//         bad: 10
+//     },
+//     {
+//         userImg: girl,
+//         author: 'petter',
+//         content: 'let me have a try',
+//         good: 57,
+//         bad: 10,
+//     },
+// ]
 
 class Comment extends React.Component {
     state = {
         value: '',
+        data: []
     }
 
     handleClick = () => {
@@ -47,10 +48,19 @@ class Comment extends React.Component {
         }).catch((e)=> {
             Toast.fail('发表失败',1);
         })
+    }
 
+    componentDidMount = () => {
+        let id = this.props.id;
+        axios.get('/detail?id=' + id).then((mes) => {
+            this.setState({
+                data: mes.data
+            })
+        })
     }
 
     render() {
+        const data = this.state.data;
         const list = data.map((item, index)=>{
             return(
                 <div className={style.detailCommentItem} key={index}>

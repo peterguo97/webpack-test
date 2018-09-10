@@ -1,14 +1,14 @@
-import React from 'react'
-import IndexPage from './IndexPage';
+import React from 'react';
 import Notice from 'components/Notice';
+import IndexPage from './IndexPage';
 
 class MyMessage extends React.Component {
-    render(){
-        return(
-            <IndexPage>
+    render() {
+        return (
+            <IndexPage {...this.props}>
                 <Notice />
             </IndexPage>
-        )
+        );
     }
 }
 

@@ -17,7 +17,7 @@ const Item = List.Item;
 class Person extends React.Component {
     render() {
         return (
-            <IndexPage>
+            <IndexPage {...this.props}>
                 <div style={{ width: '100%' }}>
                     <Link to="/change">
                         <MessageDetail
@@ -29,16 +29,16 @@ class Person extends React.Component {
                             )}
                         />
                     </Link>
-                    <List renderHeader={()=> '设备管理'}>
+                    <List renderHeader={() => '设备管理'}>
                         <Link to="/uploadDevice">
-                            <Item arrow='horizontal'>上传设备</Item>
+                            <Item arrow="horizontal">上传设备</Item>
                         </Link>
                         <Link to="/myDevice">
-                            <Item arrow='horizontal'>我的设备</Item>                  
+                            <Item arrow="horizontal">我的设备</Item>
                         </Link>
                         <Link to="/borrowDevice">
-                            <Item arrow='horizontal'>借用设备</Item>
-                        </Link>                        
+                            <Item arrow="horizontal">借用设备</Item>
+                        </Link>
                     </List>
                 </div>
             </IndexPage>

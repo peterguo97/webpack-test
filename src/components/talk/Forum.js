@@ -20,7 +20,7 @@ class Forum extends React.Component {
         this.setState({
             refreshing: true,
         })
-        axios.get(`forum?limit=${limit}`).then((message) => {
+        axios.get(`/forum?limit=${limit}`).then((message) => {
             this.setState({
                 data: message.data,
                 refreshing: false,
@@ -37,7 +37,7 @@ class Forum extends React.Component {
         this.setState({
             refreshing: true,
         })
-        axios.get(`forum?limit=${limit}`).then((message) => {
+        axios.get(`/forum?limit=${limit}`).then((message) => {
             this.setState({
                 data: message.data,
                 refreshing: false,
@@ -62,7 +62,7 @@ class Forum extends React.Component {
                 onRefresh={this.handleRefresh}
             >
                 {this.state.data.map(item => (
-                    <div key={item.id}>
+                    <div className={common.mybox} key={item.id}>
                         <Link to={`/detail/${item.id}`}>
                             <Talking data={item} />
                         </Link>

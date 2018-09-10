@@ -1,12 +1,13 @@
 .talkingWrapper {
-   width: 98%;
-    padding: 10px,1%;
+   width: 94%;
+    padding: 10px 1%;
+    margin: 6px auto;
     display: -ms-flexbox;
     background: #fff;
-    padding: 5px 1%;
     display: flex;
     -ms-flex-pack: justify;
     justify-content: space-between;
+    border-radius: 10px;
     border-bottom: 1px solid #ccc;
     height: 100px;
     color: #000;
@@ -38,17 +39,27 @@
 .comment {
     height: 15px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     line-height: 15px;
 }
 
+.addtime {
+    font-size: 12px;
+    color: gray;
+    height: 15px;
+    line-height: 10px;
+}
+
 .commentNum {
+    display: flex;
+    align-items: center;
     font-size: 13px;
 }
 
 .commentText {
     font-size: 15px;
     line-height: 18px;
+    color: cornflowerblue;
 }
 
 .mainContent {

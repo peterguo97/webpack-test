@@ -1,36 +1,37 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import talking from '../assets/talking.png';
+import home from 'assets/home.png';
+import home1 from 'assets/home1.png';
+import talking from 'assets/talking.png';
+import talking1 from '../assets/talking1.png';
 import search from '../assets/search.png';
-import plus from '../assets/plus.png';
-import notice from '../assets/notice.png';
+import search1 from '../assets/search1.png';
 import me from '../assets/me.png';
+import me1 from '../assets/me1.png';
 import style from './css/detail.css';
 
 const tabs = [
     {
-    src: talking, sub: '1', title: 'talking', to: '/',
+        src: [home, home1], sub: '1', title: 'talking', to: '/home',
+        },
+    {
+    src: [talking, talking1], sub: '2', title: 'talking', to: '/',
     },
         {
-    src: search, sub: '2', title: 'search', to: '/search',
+    src: [search, search1], sub: '3', title: 'search', to: '/search',
     },
         {
-    src: plus, sub: '3', title: 'plus', to: '/plus',
-    },
-        {
-    src: notice, sub: '4', title: 'notice', to: '/notice',
-    },
-        {
-    src: me, sub: '5', title: 'me', to: '/me',
+    src: [me, me1], sub: '4', title: 'me', to: '/me',
     },
   ];
 
 class IndexFooter extends React.Component {
     render() {
+        const path = this.props.path;
         const list = tabs.map((tab, index) => (
-            <div className={style.footer} key={index}>
+            <div className={path === tab.to ? style.focusFooter : style.footer} key={index}>
                 <Link to={tab.to}>
-                    <img src={tab.src} alt={tab.title} />
+                    <img src={path === tab.to ? tab.src[1] : tab.src[0]} alt={tab.title} />
                 </Link>
             </div>
         ));

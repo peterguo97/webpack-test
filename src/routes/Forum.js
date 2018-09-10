@@ -5,7 +5,7 @@ import Forum from '../components/talk/Forum';
 class MyForum extends React.Component {
     render() {
         return (
-            <IndexPage>
+            <IndexPage {...this.props}>
                 <Forum />
             </IndexPage>
         );

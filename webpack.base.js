@@ -1,5 +1,4 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
 module.exports = {
@@ -17,7 +16,7 @@ module.exports = {
         alias: {
             components: path.resolve(__dirname, './src/components/'),
             assets: path.resolve(__dirname, './src/assets/'),
-        }
+        },
     },
     module: {
         rules: [
@@ -27,10 +26,8 @@ module.exports = {
                     loader: 'babel-loader',
                 },
                 exclude: /node_modules/,
-            },
-            
-            {
-                test: /\.(png|jpg|gif|ttf|eot)$/,
+            }, {
+                test: /\.(png|jpg|gif|ttf|eot|svg)$/,
                 loader: 'url-loader',
                 options: {
                     limit: '5000',
@@ -39,7 +36,6 @@ module.exports = {
             },
         ],
     },
-    
     plugins: [
         new HtmlWebpackPlugin({
             template: './src/templet.html',

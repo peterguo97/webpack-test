@@ -16,11 +16,11 @@ const dev = {
         historyApiFallback: true,
         progress: true,
         proxy: {
-            '/api': {
-                target: 'http://localhost:3000',
-                pathRewrite: { '^/api': '' }
-            }
-        }
+            '/': {
+                target: 'http://10.14.4.76:80',
+                // pathRewrite: { '^/api': '' },
+            },
+        },
     },
     devtool: 'inline-source-map',
     module: {
@@ -41,7 +41,7 @@ const dev = {
                 ],
                 exclude: /node_modules/,
             },
-        ]
+        ],
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),

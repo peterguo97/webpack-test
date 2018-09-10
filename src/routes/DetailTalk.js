@@ -65,11 +65,22 @@ class DetailTalk extends React.Component {
 
     componentDidMount = () => {
         let id = this.props.match.params.talkingId;
-        axios.post('/topicsdetail',{id: id}).then((e)=>{
+        let storage = window.localStorage;
+        if(storage.getItem(id)) {
+            console.log(1);
             this.setState({
-                context: e.data
+                context: JSON.parse(storage.getItem(id)),
             })
-        })
+        }
+        else {
+            axios.post('/topicsdetail',{id: id}).then((e)=>{
+                this.setState({
+                    context: e.data
+                })
+                let data = JSON.stringify(e.data);
+                storage.setItem(id, data);
+            })
+        }
     }
     
 

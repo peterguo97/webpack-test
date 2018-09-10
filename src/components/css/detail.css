@@ -5,7 +5,23 @@
 
 .footer {
     width: 20%;
+    height: 36px;
+    padding-top: 4px;
     text-align: center;
+    background: #fff;
+}
+
+.focusFooter {
+    width: 20%;
+    height: 36px;
+    padding-top: 4px;
+    text-align: center;
+    background: #108ee9;
+}
+
+.focusFooter img {
+    width: 30px;
+    height: 30px;
 }
 
 .footer img {
@@ -19,7 +35,6 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    padding-top: 3px;
     border-top: 1px solid #ccc;
     background: #fff;
 }
@@ -128,4 +143,25 @@
 .rightmessage img{
     width: 20px;
     height: 15px;
+}
+
+.loader {
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.25);
+    text-align: center;
+/* loader页面消失采用渐隐的方式*/
+    -webkit-transition: opacity 1s ease;
+    -moz-transition: opacity 1s ease;
+    -o-transition: opacity 1s ease;
+    transition: opacity 1s ease;
+}
+/* 使用base64编码嵌入加载的logo */
+.loaderContent {
+    display: block;
+    position: relative;
+    top: 50%;
+    margin-top: -40%;
 }

@@ -5,6 +5,7 @@ import IndexFooter from '../components/myFooter';
 
 class IndexPage extends React.Component {
   render() {
+    const path = this.props.location.pathname;
     return (
       <div className={style.mainBox}>
         <div className={style.top}>
@@ -16,7 +17,7 @@ class IndexPage extends React.Component {
           {this.props.children}
         </div>
         <div className={style.footer}>
-          <IndexFooter />
+          <IndexFooter path={path} />
         </div>
       </div>
     );
