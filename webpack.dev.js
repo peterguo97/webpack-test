@@ -15,12 +15,12 @@ const dev = {
         inline: true,
         historyApiFallback: true,
         progress: true,
-        proxy: {
-            '/': {
-                target: 'http://10.14.4.76:80',
-                // pathRewrite: { '^/api': '' },
-            },
-        },
+        // proxy: {
+        //     '/': {
+        //         target: 'http://10.14.4.76:80',
+        //         // pathRewrite: { '^/api': '' },
+        //     },
+        // },
     },
     devtool: 'inline-source-map',
     module: {

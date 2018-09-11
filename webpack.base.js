@@ -27,12 +27,26 @@ module.exports = {
                 },
                 exclude: /node_modules/,
             }, {
-                test: /\.(png|jpg|gif|ttf|eot|svg)$/,
+                test: /\.(png|jpg|gif|ttf|eot)$/,
                 loader: 'url-loader',
                 options: {
                     limit: '5000',
                     name: 'images/[name]_[hash:7].[ext]',
                 },
+            },
+            {
+                test: /\.svg$/,
+                use: [
+                        {
+                        loader: 'babel-loader',
+                        },
+                        {
+                        loader: 'react-svg-loader',
+                        options: {
+                            jsx: true,
+                        },
+                    },
+                ],
             },
         ],
     },

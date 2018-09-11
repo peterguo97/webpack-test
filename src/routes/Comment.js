@@ -3,7 +3,6 @@ import { WhiteSpace, Toast } from 'antd-mobile';
 import axios from 'axios';
 import DetailComment from 'components/detailComment';
 import style from './css/common.css';
-import girl from 'assets/girl.jpg';
 
 // const data = [
 //     {
@@ -50,17 +49,8 @@ class Comment extends React.Component {
         })
     }
 
-    componentDidMount = () => {
-        let id = this.props.id;
-        axios.get('/detail?id=' + id).then((mes) => {
-            this.setState({
-                data: mes.data
-            })
-        })
-    }
-
     render() {
-        const data = this.state.data;
+        const data = this.props.data;
         const list = data.map((item, index)=>{
             return(
                 <div className={style.detailCommentItem} key={index}>

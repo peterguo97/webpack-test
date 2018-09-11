@@ -13,6 +13,7 @@ import DetailTalk from './routes/DetailTalk';
 import UploadDevice from './routes/UploadDevice';
 import BorrowDevice from './routes/BorrowDevice';
 import MyDevice from './routes/MyDevice';
+import Home from './routes/Home';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="/change" component={ChangeMessage} />
         <Route path="/changevalue/:type/:value" component={ModifyMessage} />
         <Route path="/detail/:talkingId" component={DetailTalk} />
+        <Route path="/home" component={Home} />
       </Switch>
     </Router>
   );

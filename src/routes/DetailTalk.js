@@ -29,6 +29,7 @@ class DetailTalk extends React.Component {
         bad: false,
         data: seasons.first,
         context: {
+            reply: [],
             title: '',
             author: '',
             time: '',
@@ -66,21 +67,20 @@ class DetailTalk extends React.Component {
     componentDidMount = () => {
         let id = this.props.match.params.talkingId;
         let storage = window.localStorage;
-        if(storage.getItem(id)) {
-            console.log(1);
+        axios.get('/detail?id=' + id).then((e)=>{
             this.setState({
-                context: JSON.parse(storage.getItem(id)),
+                context: e.data
             })
-        }
-        else {
-            axios.post('/topicsdetail',{id: id}).then((e)=>{
-                this.setState({
-                    context: e.data
-                })
-                let data = JSON.stringify(e.data);
-                storage.setItem(id, data);
-            })
-        }
+        })
+        // if(false) {
+        //     console.log(1);
+        //     this.setState({
+        //         context: JSON.parse(storage.getItem(id)),
+        //     })
+        // }
+        // else {
+            
+        // }
     }
     
 
@@ -105,19 +105,19 @@ class DetailTalk extends React.Component {
                 </div>
                 <div className={style.middle}>
                     <WingBlank>
-                        <div className={style.detailTitle}>{data.title}</div>
+                        <div className={style.detailTitle}>{data.topic_title}</div>
                         <div className={style.detailWrapper}>
-                            <div className={style.detailText}>发帖人: {data.name}</div>
-                            <div className={style.detailText}>发帖时间： {data.addtime}</div>
+                            <div className={style.detailText}>发帖人: {data.topic_nickname}</div>
+                            <div className={style.detailText}>发帖时间： {data.topic_addtime}</div>
                         </div>
                         <div className={style.detailMainContent}>
-                            {data.content}
+                            {data.topic_content}
                         </div>
                         <div className={style.detailImgWrapper}>
                             { imgList }
                         </div>
                     </WingBlank>
-                    <Comment id={id}/>
+                    <Comment data={this.state.context.reply} />
                 </div>
                 <Picker
                     visible={this.state.show}

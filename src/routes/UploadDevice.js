@@ -126,11 +126,12 @@ class UploadDevice extends React.Component {
                     <InputItem value={this.state.num} onChange={this.changeNum} type="text" placeholder="请输入设备型号">设备型号:</InputItem>
                     <WhiteSpace size="lg" />
                     <List renderHeader={() => '选择设备类型'}>
-                        {data1.map(i => (
-                            <RadioItem key={i.value} checked={value === i.value} onChange={() => this.onChangeRadio(i.value)}>
-                                {i.label}
-                            </RadioItem>
-                        ))}
+                        <select>
+                            <option value="grapefruit">Grapefruit</option>
+                            <option value="lime">Lime</option>
+                            <option selected value="coconut">Coconut</option>
+                            <option value="mango">Mango</option>
+                        </select>
                     </List>
                     <WhiteSpace size="lg" />
                     <div className={style.title}>请输入设备描述</div>
