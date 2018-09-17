@@ -15,16 +15,16 @@ const data = [
 class MySearch extends React.Component {
     render() {
         return (
-            <IndexPage {...this.props}>
-                <Search />
+            <div>
+                <Search {...this.props} />
                 <div className={style.labelwrap}>
                     {
                         data.map((item, index) => (
-                                <MyLabel key={index} data={item}/>
+                                <MyLabel key={index} data={item} />
                             ))
                     }
                 </div>
-            </IndexPage>
+            </div>
         );
     }
 }

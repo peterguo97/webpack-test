@@ -8,7 +8,7 @@ class Talking extends React.Component {
         return (
             <div className={style.talkingWrapper}>
                 <div className={style.leftImg}>
-                    <img src={data.pic} alt="talkingImg" />
+                    <img src={data.img1} alt="talkingImg" />
                 </div>
                 <div className={style.rightContent}>
                     <div className={style.mainContent}>

@@ -146,4 +146,8 @@
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-} 
+}
+
+.personItem {
+    width: 100%;
+}

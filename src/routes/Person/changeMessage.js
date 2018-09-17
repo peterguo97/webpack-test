@@ -6,25 +6,46 @@ import go from 'assets/go.png';
 import RightContent from 'components/rightContent';
 
 const data = {
-    name: 'Bob',
+    relname: 'Bob',
     sex: '1',
-    gender: '通信1603',
-    sid: '288727637236',
+    class: '通信1603',
+    stuid: '288727637236',
 };
+
 class ChangeMessage extends React.Component {
+  state = {
+    relname: '',
+    sex:'',
+    class: '',
+    stuid: '',
+    mobile: '',
+  }
   back = () => {
     this.props.history.push('/me');
   }
 
+  componentDidMount = () => {
+      let storage = window.localStorage;
+      Object.keys(this.state).forEach((item,index)=>{
+        if(storage.getItem(item)) {
+          this.setState({
+            [item]: storage.getItem(item)
+          })
+        }
+      })
+  }
+  
+  
   render() {
+    let data = this.state;
     return (
       <div>
         <NavBar mode="dark" icon={<Icon type="left" />} onLeftClick={this.back}> 个人信息 </NavBar>
-        <Link to={`/changevalue/name/${data.name}`}>
+        <Link to={`/changevalue/relname/${data.relname}`}>
           <ShowMessage
             left="姓名"
             right={
-              <RightContent data={data.name} icon={<Icon type="right" />} />
+              <RightContent data={data.relname} icon={<Icon type="right" />} />
           }
           />
         </Link>
@@ -36,19 +57,27 @@ class ChangeMessage extends React.Component {
         }
         />
         </Link>
-        <Link to={`/changevalue/gender/${data.gender}`}>
+        <Link to={`/changevalue/class/${data.class}`}>
         <ShowMessage
           left="班级"
           right={
-         <RightContent data={data.gender} icon={<Icon type="right" />} />
+         <RightContent data={data.class} icon={<Icon type="right" />} />
         }
         />
         </Link>
-        <Link to={`/changevalue/sid/${data.sid}`}>
+        <Link to={`/changevalue/stuid/${data.stuid}`}>
         <ShowMessage
           left="学号"
           right={
-        <RightContent data={data.sid} icon={<Icon type="right" />} />
+        <RightContent data={data.stuid} icon={<Icon type="right" />} />
+        }
+        />
+        </Link>
+        <Link to={`/changevalue/mobile/${data.mobile}`}>
+        <ShowMessage
+          left="联系方式"
+          right={
+        <RightContent data={data.mobile} icon={<Icon type="right" />} />
         }
         />
         </Link>

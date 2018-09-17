@@ -1,22 +1,26 @@
 import React from 'react';
 import { List, InputItem,WhiteSpace, Button, NavBar, Icon } from 'antd-mobile';
+import axios from 'axios';
 
 class ModifyMessage extends React.Component {
    constructor(props) {
         super(props);
-        let title;
-        if(this.props.match.params.type === "name"){
-            title = "姓名"
+        let title, value;
+        if(this.props.match.params.type === "relname"){
+            title = "姓名";
         }
-        if (this.props.match.params.type === "sid") {
-          title = "学号"
+        if (this.props.match.params.type === "stuid") {
+          title = "学号";
         }
         if (this.props.match.params.type === "sex") {
-          title = "性别"
+          title = "性别";
         }
-        if (this.props.match.params.type === "gender") {
-          title = "班级"
+        if (this.props.match.params.type === "class") {
+          title = "班级";
         }
+        if (this.props.match.params.type === "mobile") {
+            title = "联系方式";
+          }
         this.state = {
             value: props.match.params.value,
             title: title
@@ -28,11 +32,30 @@ class ModifyMessage extends React.Component {
     }
 
     handleClick = () => {
-
+        let value = this.state.value;
+        if(!this.state.value) {
+            Toast.fail(`${this.state.title}不能为空`, 1);
+            return;
+        }
+        if(this.state.title === "性别") {
+            if(this.state.value == '男' ) {
+                value = 1;
+            }
+            else {
+                value = 2;
+            }
+        }
+        if(window.localStorage) {
+            window.localStorage.setItem(this.props.match.params.type, value);
+        }
+        axios.get('/message?'+this.props.match.params.type + '=' + value).then((e)=>{
+            if(e.data) {
+                Toast.success('修改成功',1);
+            }
+        })
     }
 
     changeValue = (v) => {
-        console.log(v);
         this.setState({
             value: v
         })

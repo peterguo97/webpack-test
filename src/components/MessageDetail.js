@@ -6,10 +6,10 @@ export default class MessageDetail extends React.Component {
         const data = this.props.data;
         return (
             <div className={style.messageWrap}>
-               <div className={style.userImage}><img src={data.img} alt="user" /></div>
+               <div className={style.userImage}><img src={data.headimgurl} alt="user" /></div>
                <div className={style.content}>
-                    <div className={style.userName}>{data.title}</div>
-                    <div className={style.userInfo}>{data.description}</div>
+                    <div className={style.userName}>{data.class}&nbsp;{data.relname}</div>
+                    <div className={style.userInfo}>学号: {data.stuid}</div>
                </div>
                <div className={style.time}>{this.props.rightContent}</div>
             </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-SearchBar,
+SearchBar, Toast
 } from 'antd-mobile';
 import common from '../css/detail.css';
 
@@ -20,6 +20,14 @@ class Search extends React.Component {
     this.setState({ value: '' });
   }
 
+  handleSubmit = () => {
+    if(! this.state.value ) {
+      Toast.info('请输入搜索内容', 1);
+      return;
+    }
+    this.props.history.push('/searchresult/' + this.state.value);
+  }
+
   handleClick() {
     this.manualFocusInst.focus();
   }
@@ -30,7 +38,8 @@ class Search extends React.Component {
         <SearchBar
           value={this.state.value}
           onChange={this.onChange}
-          placeholder="lalallalal"
+          onSubmit={this.handleSubmit}
+          placeholder="请输入搜索的设备名称"
           maxLength={20}
         />
       </div>

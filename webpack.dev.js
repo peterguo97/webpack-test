@@ -41,6 +41,15 @@ const dev = {
                 ],
                 exclude: /node_modules/,
             },
+            // {
+            //     test: /\.less$/,
+            //     use: [
+            //         'style-loader',
+            //         'css-loader',
+            //         'less-loader',
+            //     ],
+            //     include: path.resolve(__dirname, 'node_modules'),
+            // },
         ],
     },
     plugins: [

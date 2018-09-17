@@ -21,7 +21,7 @@
     background: #fff;
     color: black;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     padding: 0 2%;
 }
@@ -40,8 +40,9 @@
 .content {
     display: flex;
     flex-direction: column;
+    color: #108ee9;
     justify-content: flex-start;
-    width: 50%;
+    width: 60%;
 }
 
 .userName {

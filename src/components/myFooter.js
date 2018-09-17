@@ -7,31 +7,60 @@ import Me from '../assets/me.svg';
 import style from './css/detail.css';
 
 class IndexFooter extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            footer0: '',
+            footer1: '',
+            footer2: '',
+            footer3: '',
+            defaultvalue: props.defaultvalue || 0,
+        }
+    }
+    handleClick = (key,index) => {
+        let key1 = 'footer' + this.state.defaultvalue;
+        this.setState({
+            [key1]: '',
+            [key]: '#108ee9',
+            defaultvalue: index,
+        })
+    }
+
+    componentDidMount = () => {
+        console.log(1);
+        let key = 'footer' + this.state.defaultvalue;
+        this.setState({
+            [key]: '#108ee9'
+        })
+    }
+    
     render() {
-        const path = this.props.path;
         return (
             <div className={style.IndexFooter}>
                 <div className={style.footer}>
-                    <Link to="/home">
-                        <Home fill={path === '/home' ? '#108ee9' : ''} width="26px" height="26px" />
+                    <Link to="/app/home">
+                        <Home onClick={()=>{this.handleClick('footer0',0)}} fill={this.state.footer0} width="26px" height="26px" />
+                        <div className={style.footerFont}>首页</div>
                     </Link>
                 </div>
                 <div className={style.footer}>
-                    <Link to="/">
-                        <Talking fill={path === '/' ? '#108ee9' : ''} width="26px" height="26px" />
+                    <Link to="/app/forum">
+                        <Talking onClick={()=>{this.handleClick('footer1',1)}} fill={this.state.footer1} width="26px" height="26px" />
+                        <div className={style.footerFont}>论坛</div>
+                    </Link>
+                </div>
+
+                <div className={style.footer}>
+                    <Link to="/app/search">
+                        <Search onClick={()=>{this.handleClick('footer2',2)}} fill={this.state.footer2} width="26px" height="26px" />
+                        <div className={style.footerFont}>搜索</div>
                     </Link>
                 </div>
 
                 <div className={style.footer}>
-                    <Link to="/search">
-                        <Search fill={path === '/search' ? '#108ee9' : ''} width="26px" height="26px" />
-                    </Link>
-                </div>
-
-
-                <div className={style.footer}>
-                    <Link to="/me">
-                        <Me fill={path === '/me' ? '#108ee9' : ''} width="26px" height="26px" />
+                    <Link to="/app/me">
+                        <Me onClick={()=>{this.handleClick('footer3',3)}} fill={this.state.footer3} width="26px" height="26px" />
+                        <div className={style.footerFont}>我</div>
                     </Link>
                 </div>
             </div>

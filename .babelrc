@@ -1,10 +1,7 @@
 {
     "presets": [ "env", "react", "stage-0"],
      "plugins": [
-        ["import", {
-            "libraryName": "antd-mobile",
-            "style": "css"
-        }],
+        ["import", { "style": "css", "libraryName": "antd-mobile"}],
         "transform-class-properties",
         "transform-runtime"
      ]

@@ -1,10 +1,13 @@
 import React from 'react';
 import { List, InputItem, NavBar, ImagePicker, WingBlank, Button, Icon, Radio, WhiteSpace, Toast } from 'antd-mobile';
+// import { Select } from 'antd';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import style from './css/common.css';
 
 const RadioItem = Radio.RadioItem;
+
+// const Option = Select.Option;
 
 class UploadDevice extends React.Component {
     constructor() {
@@ -54,6 +57,10 @@ class UploadDevice extends React.Component {
         }).catch( e => {
             Toast.fail('上传失败', 1.5);
         })
+    }
+
+    handleChange = (val) => {
+        console.log(val);
     }
 
     checkNull = () => {
@@ -126,12 +133,7 @@ class UploadDevice extends React.Component {
                     <InputItem value={this.state.num} onChange={this.changeNum} type="text" placeholder="请输入设备型号">设备型号:</InputItem>
                     <WhiteSpace size="lg" />
                     <List renderHeader={() => '选择设备类型'}>
-                        <select>
-                            <option value="grapefruit">Grapefruit</option>
-                            <option value="lime">Lime</option>
-                            <option selected value="coconut">Coconut</option>
-                            <option value="mango">Mango</option>
-                        </select>
+                       
                     </List>
                     <WhiteSpace size="lg" />
                     <div className={style.title}>请输入设备描述</div>
