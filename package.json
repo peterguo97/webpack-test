@@ -50,11 +50,14 @@
     "webpack-parallel-uglify-plugin": "^1.1.0"
   },
   "dependencies": {
+    "antd": "^3.9.2",
     "antd-mobile": "^2.2.2",
     "babel-runtime": "^6.26.0",
+    "classnames": "^2.2.6",
     "react": "^16.4.1",
     "react-dom": "^16.4.2",
     "react-router": "^4.4.0-alpha.1",
-    "react-router-dom": "^4.3.1"
+    "react-router-dom": "^4.3.1",
+    "react-select": "^2.0.0"
   }
 }

@@ -1,0 +1,32 @@
+.connectWrapp {
+    width: 100%;
+}
+
+.Title {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    background: #fff;
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    line-height: 30px;
+}
+
+.right {
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-left: 10px solid black;
+}
+
+.down {
+    width: 0;
+    height: 0;
+    margin-top: 12px;
+    border: 10px solid transparent;
+    border-top: 10px solid black;
+}
+
+.userWrap {
+    width: 100%;
+}

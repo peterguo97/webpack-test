@@ -104,7 +104,7 @@ class DetailTalk extends React.Component {
                     热门帖子</NavBar>
                 </div>
                 <div className={style.middle}>
-                    <WingBlank>
+                    <div style={{padding: '0 10px', background: '#fff'}}>
                         <div className={style.detailTitle}>{data.topic_title}</div>
                         <div className={style.detailWrapper}>
                             <div className={style.detailText}>发帖人: {data.topic_nickname}</div>
@@ -115,8 +115,8 @@ class DetailTalk extends React.Component {
                         </div>
                         <div className={style.detailImgWrapper}>
                             { imgList }
-                        </div>
-                    </WingBlank>
+                        </div>        
+                    </div>
                     <Comment data={this.state.context.reply} />
                 </div>
                 <Picker

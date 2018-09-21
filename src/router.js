@@ -7,6 +7,7 @@ import MyMessage from './routes/Message';
 import MyForum from './routes/Forum';
 import MySearch from './routes/Search';
 import Person from './routes/Person/myperson';
+import MyConnect from './routes/myconnect';
 import ChangeMessage from './routes/Person/changeMessage';
 import ModifyMessage from './routes/ModifyMessage';
 import MobileEditor from './routes/testEditor';
@@ -42,13 +43,14 @@ function App() {
         <Route path="/uploadDevice" component={UploadDevice} />
         <Route path="/myDevice" component={MyDevice} />
         <Route path="/myorder" component={MyOrder} />
+        <Route path="/myconnect" component={MyConnect} />
         <Route path="/borrowDevice" component={BorrowDevice} />
         <Route path="/plus" component={MobileEditor} />
         <Route path="/change" component={ChangeMessage} />
         <Route path="/searchresult/:search" component={SearchResult} />
         <Route path="/changevalue/:type/:value?" component={ModifyMessage} />
         <Route path="/detail/:talkingId" component={DetailTalk} />
-        <Redirect path="/" to={{ pathname: '/app' }} />
+        <Redirect path="/" to={{ pathname: '/app/home' }} />
       </Switch>
     </Router>
   );

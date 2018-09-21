@@ -6,7 +6,9 @@ const base = require('./webpack.base');
 const dev = {
     devServer: {
         contentBase: path.join(__dirname, './dist'),
+        host: '10.14.4.104',
         port: 8080,
+        disableHostCheck: true,
         publicPath: '/',
         overlay: true,
         compress: true,
@@ -41,15 +43,15 @@ const dev = {
                 ],
                 exclude: /node_modules/,
             },
-            // {
-            //     test: /\.less$/,
-            //     use: [
-            //         'style-loader',
-            //         'css-loader',
-            //         'less-loader',
-            //     ],
-            //     include: path.resolve(__dirname, 'node_modules'),
-            // },
+            {
+                test: /\.less$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'less-loader',
+                ],
+                include: path.resolve(__dirname, 'node_modules'),
+            },
         ],
     },
     plugins: [

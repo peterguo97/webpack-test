@@ -53,7 +53,7 @@ class Forum extends React.Component {
                 damping={100}
                 ref={el => this.ptr = el}
                 style={{
-                height: this.state.height,
+                height: '100%',
                 overflow: 'auto',
                 }}
                 indicator={{ deactivate: '上拉可以刷新' }}

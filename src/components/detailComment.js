@@ -79,7 +79,7 @@ class DetailComment extends React.Component {
         return(
             <div className={style.commentWrapper}>
                 <div className={style.commentLeft}>
-                    <img src={data.userImg} alt=""/>
+                    <img src={data.headimgurl} alt=""/>
                 </div>
                 <div className={style.commentRight}>
                     <div className={style.commentAuthor}>{data.author}</div>

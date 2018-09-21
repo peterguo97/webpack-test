@@ -26,12 +26,11 @@
     width: 96%;
     height: 200px;
     overflow: scroll;
-    padding: 0 2%;
+    padding: 2%;
     border: none;
 }
 
 .title {
-    width: 100%;
     height: 44px;
     border-bottom: 1px solid rgb(242,242,242);
     line-height: 44px;
@@ -43,6 +42,7 @@
     font-size: 1.5rem;
     text-align: center;
     font-weight: bold;
+    padding: 10px;
 }
 
 .detailText {
@@ -81,7 +81,7 @@
 }
 
 .detailComment {
-    margin-top: 10px;
+    margin: 10px 0px 55px;
     background: rgb(245,245,249);
 }
 
@@ -150,4 +150,38 @@
 
 .personItem {
     width: 100%;
+}
+
+.personBack {
+    background-image: url('assets/person-background.jpg');
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 260px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.backUserImage {
+    width: 100px;
+    height: 100px;
+    background: #fff;
+    border-radius: 50px;
+}
+
+.backUserImage img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+}
+
+.inputBox {
+    margin-top: 12px;
+    background: #fff;
+}
+
+.back {
+    background: #fff;
+    padding: 10px 6px;
 }

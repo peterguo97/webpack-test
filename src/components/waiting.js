@@ -17,6 +17,11 @@ function closest(el, selector) {
     }
     return null;
 }
+
+// const data1 = {
+//     name: 'Just for test',
+//     detail: 'Just for testJust for testJust for testJust for testJust for testJust for test',
+// }
 class Waiting extends React.Component {
     state = {
         data: [],
@@ -84,7 +89,7 @@ class Waiting extends React.Component {
                     title={data1.name}
                     wrapProps={{ onTouchStart: this.onWrapTouchStart }}
                     >
-                    <div style={{ height: 100, overflow: 'hidden', borderTop: '1px solid black', paddingTop: '8px'
+                    <div style={{ overflow: 'hidden', borderTop: '1px solid black', paddingTop: '8px'
                     }}>
                         {data1.detail}
                     </div>

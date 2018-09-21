@@ -62,7 +62,7 @@ class BorrowDevice extends React.Component {
         const data = this.state.data;
         return (
             <div>
-                <NavBar mode="dark" leftContent={<Link to='/me'><Icon style={{ color: '#fff' }} type="left" /></Link>}>我的租借</NavBar>
+                <NavBar mode="dark" leftContent={<Link to='/app/me'><Icon style={{ color: '#fff' }} type="left" /></Link>}>我的租借</NavBar>
                 <List renderHeader={() => '设备状态'}>
                     {
                         data.map((item,index)=>{

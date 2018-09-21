@@ -38,7 +38,7 @@ class MyDevice extends React.Component {
     render() {
         return (
             <div>
-                <NavBar mode="dark" leftContent={<Link to='/me'><Icon style={{ color: '#fff' }} type="left" /></Link>}>我的设备</NavBar>
+                <NavBar mode="dark" leftContent={<Link to='/app/me'><Icon style={{ color: '#fff' }} type="left" /></Link>}>我的设备</NavBar>
                 <List renderHeader={()=>'设备状态'}>
                     {
                         this.state.data.map((item,index)=> {
