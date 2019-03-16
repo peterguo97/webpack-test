@@ -1,48 +1,62 @@
 import React from 'react';
-import { Carousel, WingBlank } from 'antd-mobile';
-
+import { Carousel, WingBlank,WhiteSpace } from 'antd-mobile';
+import style from './css/common.css';
+import download from 'assets/download.png';
+import search from 'assets/search.png';
+import axios from 'axios';
 class Home extends React.Component {
     state = {
-        data: ['1', '2', '3'],
+        data: [],
         imgHeight: 176,
       }
       componentDidMount() {
-        // simulate img loading
-        setTimeout(() => {
+        
+        axios.get("/api/bannershow").then((mes)=>{
+          console.log(mes.data)
           this.setState({
-            data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
-          });
-        }, 100);
+            data: mes.data
+          })
+        })
       }
+      
       render() {
         return (
-          <WingBlank>
-            <Carousel
-              autoplay={false}
-              infinite
-              beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
-              afterChange={index => console.log('slide to', index)}
-            >
-              {this.state.data.map(val => (
-                <a
-                  key={val}
-                  href="http://www.alipay.com"
-                  style={{ display: 'inline-block', width: '100%', height: this.state.imgHeight }}
-                >
+          <div>
+            <WingBlank>
+              <WhiteSpace />
+              <Carousel
+                autoplay={false}
+                infinite
+                beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
+                afterChange={index => console.log('slide to', index)}
+              >
+                {this.state.data.map(val => (
                   <img
-                    src={`https://zos.alipayobjects.com/rmsportal/${val}.png`}
-                    alt=""
-                    style={{ width: '100%', verticalAlign: 'top' }}
-                    onLoad={() => {
-                      // fire window resize event to change height
-                      window.dispatchEvent(new Event('resize'));
-                      this.setState({ imgHeight: 'auto' });
-                    }}
-                  />
-                </a>
-              ))}
-            </Carousel>
-          </WingBlank>
+                      src={val.url}
+                      key={val.uid}
+                      alt=""
+                      style={{ width: '100%', verticalAlign: 'top' }}
+                      onLoad={() => {
+                        // fire window resize event to change height
+                        window.dispatchEvent(new Event('resize'));
+                        this.setState({ imgHeight: 'auto' });
+                      }}
+                    />
+                ))}
+              </Carousel>
+              <WhiteSpace />
+            </WingBlank>
+            <div className={style.homeImgWrappper}>
+              <div className={style.homeImgBox}>
+                <img src={download} alt="资料下载" />
+                <span>资料下载</span>
+              </div> 
+              <div className={style.homeImgBox}>
+                <img src={search} alt="资料搜索" />
+                <div>资料搜索</div>
+              </div>
+            </div>
+          </div>
         );
       }
 }

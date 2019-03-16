@@ -4,5 +4,10 @@
             "id": 1,
             "pic": "./public/girl.jpg"
         }
+    ],
+    "bannershow": [
+        {"uid": 1, "url": "/static/1.png"},
+        {"uid": 2, "url": "/static/2.png"},
+        {"uid": 3, "url": "/static/3.png"}
     ]
 }

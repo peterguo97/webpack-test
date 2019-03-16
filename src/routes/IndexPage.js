@@ -5,6 +5,9 @@ import IndexFooter from '../components/myFooter';
 
 class IndexPage extends React.Component {
   render() {
+    let path = this.props.location.pathname;
+    let pageIndex = path.replace(/[^\d]/g, '');
+    console.log(pageIndex);
     return (
       <div className={style.mainBox}>
         <div className={style.top}>
@@ -16,7 +19,7 @@ class IndexPage extends React.Component {
           {this.props.children}
         </div>
         <div className={style.footer}>
-          <IndexFooter />
+          <IndexFooter pageIndex={pageIndex} />
         </div>
       </div>
     );

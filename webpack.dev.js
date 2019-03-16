@@ -6,23 +6,23 @@ const base = require('./webpack.base');
 const dev = {
     devServer: {
         contentBase: path.join(__dirname, './dist'),
-        host: '10.14.4.104',
+        host: '0.0.0.0',
         port: 8080,
         disableHostCheck: true,
         publicPath: '/',
         overlay: true,
         compress: true,
-        open: true,
+        open: false,
         hot: true,
         inline: true,
         historyApiFallback: true,
         progress: true,
-        // proxy: {
-        //     '/': {
-        //         target: 'http://10.14.4.76:80',
-        //         // pathRewrite: { '^/api': '' },
-        //     },
-        // },
+        proxy: {
+            '/api': {
+                target: 'http://localhost:3000',
+                pathRewrite: { '^/api': '' },
+            },
+        },
     },
     devtool: 'inline-source-map',
     module: {

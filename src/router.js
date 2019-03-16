@@ -22,15 +22,15 @@ import Home from './routes/Home';
 class Layout extends React.Component {
   render() {
     return (
-      <IndexPage>
         <Switch>
-          <Route path="/app/forum" exact component={MyForum} />
-          <Route path="/app/notice" component={MyMessage} />
-          <Route path="/app/search" component={MySearch} />
-          <Route path="/app/me" component={Person} />
-          <Route path="/app/home" component={Home} />
+          <IndexPage>
+            <Route path="/app/:pageIndex/forum" exact component={MyForum} />
+            {/* <Route path="/app/:pageIndex/notice" component={MyMessage} /> */}
+            <Route path="/app/:pageIndex/search" component={MySearch} />
+            <Route path="/app/:pageIndex/me" component={Person} />
+            <Route path="/app/:pageIndex/home" component={Home} />
+          </IndexPage>
         </Switch>
-      </IndexPage>
     );
   }
 }
@@ -50,7 +50,7 @@ function App() {
         <Route path="/searchresult/:search" component={SearchResult} />
         <Route path="/changevalue/:type/:value?" component={ModifyMessage} />
         <Route path="/detail/:talkingId" component={DetailTalk} />
-        <Redirect path="/" to={{ pathname: '/app/home' }} />
+        <Redirect path="/" to={{ pathname: '/app/0/home' }} />
       </Switch>
     </Router>
   );

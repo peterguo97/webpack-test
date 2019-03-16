@@ -2,7 +2,7 @@ import React from 'react';
 import { List, NavBar, Icon, Picker, Button, Toast } from 'antd-mobile';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import girl from 'assets/girl.jpg';
+
 
 const Item = List.Item;
 const Brief = Item.Brief;

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Comment from './Comment';
 import style from './css/common.css';
-import test1 from 'assets/girl.jpg';
+import Loading from 'components/loading';
 
 const seasons = {
     first: [
@@ -27,6 +27,7 @@ class DetailTalk extends React.Component {
         sValue: '',
         show: false,
         bad: false,
+        loading: true,
         data: seasons.first,
         context: {
             reply: [],
@@ -69,7 +70,8 @@ class DetailTalk extends React.Component {
         let storage = window.localStorage;
         axios.get('/detail?id=' + id).then((e)=>{
             this.setState({
-                context: e.data
+                context: e.data,
+                loading: false,
             })
         })
         // if(false) {
@@ -96,6 +98,7 @@ class DetailTalk extends React.Component {
         });
         return(
             <div className={style.mainBox}>
+                <Loading show={this.state.loading} />
                 <div className={style.top}>
                     <NavBar 
                         leftContent={<Link to='/'><Icon style={{ color: '#fff' }} type="left" /></Link>}
@@ -115,10 +118,11 @@ class DetailTalk extends React.Component {
                         </div>
                         <div className={style.detailImgWrapper}>
                             { imgList }
-                        </div>        
+                        </div>     
                     </div>
-                    <Comment data={this.state.context.reply} />
+                    <Comment id={id} data={this.state.context.reply} />
                 </div>
+                
                 <Picker
                     visible={this.state.show}
                     data={this.state.data}

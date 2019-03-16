@@ -15,10 +15,11 @@ class UploadDevice extends React.Component {
         super();
         this.state = {
             title: '',
-            content: '',
+            num: '',
             selectvalue: '',
+            content: '',
             files: [],
-            value: '',
+            
         }
     }
 
@@ -31,7 +32,7 @@ class UploadDevice extends React.Component {
     changeNum = (val) => {
         console.log(val)
         this.setState({
-            selectvalue: val,
+            num: val,
         })
     }
 
@@ -53,9 +54,9 @@ class UploadDevice extends React.Component {
         if(!res) {
             return;
         }
-        axios.post('/goodsadd', this.state).then(message=>{
+        axios.post('/goodsadd', this.state).then(mes=>{
             Toast.success('上传成功', 1.5);
-            console.log(mesage.data);
+            console.log(mes.data);
         }).catch( e => {
             Toast.fail('上传失败', 1.5);
         })
@@ -78,7 +79,7 @@ class UploadDevice extends React.Component {
                     }
                     break;
 
-                case 'value':
+                case 'selectvalue':
                     if (this.state[key] === '') {
                         Toast.fail('请选择设备类型', 1);
                         return false;
@@ -108,7 +109,7 @@ class UploadDevice extends React.Component {
 
     onChangeRadio = (value) => {
         this.setState({
-            value: value,
+            selectvalue: value,
         })
     }
 
@@ -139,7 +140,7 @@ class UploadDevice extends React.Component {
                             value={this.state.selectvalue}
                             isSearchable={false}
                             placeholder="请选择设备类型"
-                            onChange={this.changeNum}
+                            onChange={this.onChangeRadio}
                             options={data1}
                         />
                     </div>

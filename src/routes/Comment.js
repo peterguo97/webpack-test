@@ -35,6 +35,7 @@ class Comment extends React.Component {
     }
 
     handleClick = () => {
+        
         let content = this.refs['comment'].innerHTML;
         if( ! content ) {
             Toast.fail('你还未添加评论', 1);
